@@ -9,13 +9,7 @@ with customers as (
 ),
 
 orders as (
-    select * from {{ ref('stg_orders') }}
-),
-
-payments as (
-
-    select * from {{ ref('stg_payments') }}
-
+    select * from {{ ref('orders') }}
 ),
 
 customer_orders as (
@@ -26,7 +20,6 @@ customer_orders as (
         count(orders.id) as number_of_orders,
         sum(amount) as lifetime_value
     from orders
-      join payments on orders.id = payments.order_id
     group by 1
 ),
 
