@@ -13,10 +13,10 @@ orders as (
 order_payments as (
 
   select
-      orders.id as order_id,
+      orders.order_id as order_id,
       sum(amount) as amount
   from payments
-    join orders on payments.order_id = orders.id
+    join orders on payments.order_id = orders.order_id
   group by 1
 
 
@@ -26,13 +26,13 @@ order_payments as (
 final as (
 
   select
-      orders.id,
+      orders.order_id,
       orders.customer_id,
       orders.order_date,
       orders.status,
       coalesce(order_payments.amount, 0) as amount
   from orders
-    join order_payments on orders.id = order_payments.order_id
+    join order_payments on orders.order_id = order_payments.order_id
 
 )
 
