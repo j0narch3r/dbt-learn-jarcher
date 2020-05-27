@@ -8,7 +8,7 @@ models:
       ## Something else
       Blah blah
     columns:
-      - name: id
+      - name: customer_id
         description: Primary key
         tests:
           - unique
@@ -16,7 +16,7 @@ models:
   - name: stg_orders
     description: This model cleans up order data
     columns:
-      - name: id
+      - name: order_id
         description: Primary key
         tests:
           - unique
@@ -28,7 +28,7 @@ models:
   - name: customers
     description: Master customer table. One row per customer.
     columns:
-      - name: id
+      - name: customer_id
         description: Primary key
         tests:
           - unique
