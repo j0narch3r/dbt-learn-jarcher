@@ -3,7 +3,7 @@ models:
   - name: customers
     description: "{{ doc('customers') }}"
     columns:
-      - name: customer_id
+      - name: id
         description: Primary key
         tests:
           - unique
@@ -17,7 +17,7 @@ models:
       ## Something else
       Blah blah
     columns:
-      - name: customer_id
+      - name: id
         description: Primary key
         tests:
           - unique
@@ -25,7 +25,7 @@ models:
   - name: stg_orders
     description: This model cleans up order data
     columns:
-      - name: order_id
+      - name: id
         description: Primary key
         tests:
           - unique
@@ -34,3 +34,8 @@ models:
         tests:
           - accepted_values:
               values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+  - name: orders
+    columns:
+      - name: amount
+        tests:
+          - not_null
