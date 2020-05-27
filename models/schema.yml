@@ -1,4 +1,5 @@
 version: 2
+
 models:
   - name: customers
     description: "{{ doc('customers') }}"
@@ -39,3 +40,15 @@ models:
       - name: amount
         tests:
           - not_null
+
+sources:
+  - name: jaffle_shop
+    database: raw
+    tables:
+      - name: orders
+      - name: customers
+
+  - name: stripe
+    database: raw
+    tables:
+      - name: payment
